@@ -16,17 +16,17 @@ export const Navbar = () => {
     >
       <NavbarContent className="flex items-center w-full px-4" justify="center">
         <NavbarItem>
-          <Link isExternal href="/">
+          <Link href="/">
             <HomeLogo className="dark:text-white text-black" />
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link isExternal href="/project">
+          <Link href="/project">
             <ProjectLogo className="dark:text-white text-black" />
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link isExternal href="/education">
+          <Link href="/education">
             <EducationLogo className="dark:text-white text-black" />
           </Link>
         </NavbarItem>
