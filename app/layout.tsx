@@ -9,8 +9,8 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteConfig.name || "",
+    template: `%s - ${siteConfig.name || ""}`,
   },
   description: siteConfig.description,
   themeColor: [
@@ -34,30 +34,39 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "bg-background font-sans antialiased transform transition ease-in-out duration-200",
           fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="flex flex-col h-screen w-full">
-            <main className="w-full relative px-6 md:bg-red-700 flex-grow">
-              <Navbar />
+          <Navbar />
+          <div className="w-full px-6">
+            <main className="md:pl-[50px]">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
+            <footer className="w-full flex items-center justify-center py-3 text-current">
+              <span className="text-default-600">Powered by</span>
+              <div className="flex items-center gap-1">
+                <Link
+                  isExternal
+                  href="https://nextjs.org/"
+                  title="nextui.org homepage"
+                >
+                  <p className="text-primary ml-1">Next</p>
+                </Link>
+                <span className="text-primary">+</span>
+                <Link
+                  isExternal
+                  href="https://nextui-docs-v2.vercel.app"
+                  title="nextui.org homepage"
+                >
+                  <p className="text-primary ml-1">NextUI</p>
+                </Link>
+              </div>
             </footer>
           </div>
         </Providers>
       </body>
-    </html>
+    </html >
   );
 }

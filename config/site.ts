@@ -1,8 +1,8 @@
 import { HomeLogo, ProjectLogo, EducationLogo } from "@/components/icons";
 
 export const siteConfig = {
-  name: "Zidan Khulul Sajid",
-  description: "An software engineer who loves to build things.",
+  name: process.env.APP_TITLE,
+  description: process.env.APP_DESCRIPTION,
   navItems: [
     {
       label: "Home",

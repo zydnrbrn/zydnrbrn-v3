@@ -11,11 +11,10 @@ import { Tooltip } from "@nextui-org/tooltip";
 export const Navbar = () => {
   return (
     <NextUINavbar
-      className="dark:bg-graymac/50 bg-graymac/30 flex rounded-[80px] my-5 transform transition ease-in-out duration-200"
-      maxWidth="full"
+      className="dark:bg-graymac/50 bg-graymac/30 flex z-50 w-full md:w-[80px] rounded-[80px] top-5 md:top-[500px] md:h-[300px] transform transition ease-in-out duration-200"
       position="sticky"
     >
-      <NavbarContent className="flex items-center w-full px-4" justify="center">
+      <NavbarContent className="flex md:flex-col items-center w-full px-4" justify="center">
         <NavbarItem>
           <Tooltip content="Home 🏠">
             <Link href="/">
