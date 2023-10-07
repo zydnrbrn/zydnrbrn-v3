@@ -65,15 +65,16 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "pt-px",
               "px-0",
               "mx-0",
+              isSelected || isSSR ? "" : "opacity-0", // Add opacity-0 class when not selected and not rendered on client
             ],
             classNames?.wrapper,
           ),
         })}
       >
         {!isSelected || isSSR ? (
-          <SunFilledIcon className="text-white" size={40} />
+          <SunFilledIcon className="transform transition ease-in-out duration-200 text-white" size={40} />
         ) : (
-          <MoonFilledIcon className="text-black" size={40} />
+          <MoonFilledIcon className="transform transition ease-in-out duration-200 text-black" size={40} />
         )}
       </div>
     </Component>
