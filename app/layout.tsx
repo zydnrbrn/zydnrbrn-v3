@@ -39,32 +39,32 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <Navbar />
-          <div className="w-full px-6">
-            <main className="md:pl-[50px]">
+          <main className="w-full flex justify-center items-center flex-col px-6 py-8 md:py-10">
+            <Navbar />
+            <div className="max-w-[890px]">
               {children}
-            </main>
-            <footer className="w-full flex items-center justify-center py-3 text-current">
-              <span className="text-default-600">Powered by</span>
-              <div className="flex items-center gap-1">
-                <Link
-                  isExternal
-                  href="https://nextjs.org/"
-                  title="nextui.org homepage"
-                >
-                  <p className="text-primary ml-1">Next</p>
-                </Link>
-                <span className="text-primary">+</span>
-                <Link
-                  isExternal
-                  href="https://nextui-docs-v2.vercel.app"
-                  title="nextui.org homepage"
-                >
-                  <p className="text-primary ml-1">NextUI</p>
-                </Link>
-              </div>
-            </footer>
-          </div>
+            </div>
+          </main>
+          <footer className="w-full flex items-center justify-center py-3 text-current">
+            <span className="text-default-600">Powered by</span>
+            <div className="flex items-center gap-1">
+              <Link
+                isExternal
+                href="https://nextjs.org/"
+                title="nextui.org homepage"
+              >
+                <p className="text-primary ml-1">Next</p>
+              </Link>
+              <span className="text-primary">+</span>
+              <Link
+                isExternal
+                href="https://nextui-docs-v2.vercel.app"
+                title="nextui.org homepage"
+              >
+                <p className="text-primary ml-1">NextUI</p>
+              </Link>
+            </div>
+          </footer>
         </Providers>
       </body>
     </html >

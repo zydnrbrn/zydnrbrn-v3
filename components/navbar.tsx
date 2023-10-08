@@ -1,3 +1,4 @@
+'use client'
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -7,32 +8,34 @@ import { Link } from "@nextui-org/link";
 import { HomeLogo, ProjectLogo, EducationLogo } from "./icons";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Tooltip } from "@nextui-org/tooltip";
+import { usePathname } from "next/navigation"
 
 export const Navbar = () => {
+  const pathname = usePathname();
   return (
     <NextUINavbar
-      className="dark:bg-graymac/50 bg-graymac/30 flex z-50 w-full md:w-[80px] rounded-[80px] top-5 md:top-[500px] md:h-[300px] transform transition ease-in-out duration-200"
+      className="dark:bg-graymac/50 bg-black flex z-50 max-w-[890px] rounded-[80px] mt-5 transform transition ease-in-out duration-200"
       position="sticky"
     >
-      <NavbarContent className="flex md:flex-col items-center w-full px-4" justify="center">
-        <NavbarItem>
+      <NavbarContent className="flex items-center w-full px-4" justify="center">
+        <NavbarItem isActive={pathname === "/"}>
           <Tooltip content="Home 🏠">
             <Link href="/">
-              <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-black" />
+              <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
             </Link>
           </Tooltip>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem isActive={pathname === "/project"}>
           <Tooltip content="Project 👷">
             <Link href="/project">
-              <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-black" />
+              <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
             </Link>
           </Tooltip>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem isActive={pathname === "/education"}>
           <Tooltip content="Education 📚">
             <Link href="/education">
-              <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-black" />
+              <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
             </Link>
           </Tooltip>
         </NavbarItem>
