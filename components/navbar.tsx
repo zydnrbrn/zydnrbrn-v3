@@ -4,7 +4,7 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/navbar";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
 import { HomeLogo, ProjectLogo, EducationLogo } from "./icons";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Tooltip } from "@nextui-org/tooltip";
