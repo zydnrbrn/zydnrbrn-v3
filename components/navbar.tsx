@@ -9,40 +9,55 @@ import { HomeLogo, ProjectLogo, EducationLogo } from "./icons";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Tooltip } from "@nextui-org/tooltip";
 import { usePathname } from "next/navigation"
+import LiveIsland from "react-live-island";
 
 export const Navbar = () => {
   const pathname = usePathname();
+  let currentLogo = <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+  if (pathname === "/") {
+    currentLogo = <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+  } else if (pathname === "/project") {
+    currentLogo = <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+  } else {
+    currentLogo = <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+  }
   return (
-    <NextUINavbar
-      className="dark:bg-graymac/50 bg-black flex z-50 max-w-[890px] rounded-[80px] mt-5 transform transition ease-in-out duration-200"
-      position="sticky"
+    <LiveIsland className="flex justify-center items-center uppercase"
+      top={20}
+      triggerType="hover"
+      smallClassName="text-xs"
+      smallHeight={50}
+      smallWidth={300}
+      largeClassName="text-7xl"
+      initialAnimation
     >
-      <NavbarContent className="flex items-center w-full px-4" justify="center">
-        <NavbarItem isActive={pathname === "/"}>
-          <Tooltip content="Home 🏠">
-            <Link href="/">
-              <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-            </Link>
-          </Tooltip>
-        </NavbarItem>
-        <NavbarItem isActive={pathname === "/project"}>
-          <Tooltip content="Project 👷">
-            <Link href="/project">
-              <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-            </Link>
-          </Tooltip>
-        </NavbarItem>
-        <NavbarItem isActive={pathname === "/education"}>
-          <Tooltip content="Education 📚">
-            <Link href="/education">
-              <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-            </Link>
-          </Tooltip>
-        </NavbarItem>
-        <NavbarItem>
-          <ThemeSwitch />
-        </NavbarItem>
-      </NavbarContent>
-    </NextUINavbar>
+      {(isSmall) => (isSmall ? currentLogo : (
+        <NextUINavbar
+          className=" bg-black flex z-50 max-w-[890px] rounded-[80px] mt-5 transform transition ease-in-out duration-200"
+          position="sticky"
+        >
+          <NavbarContent className="flex items-center w-full px-4" justify="center">
+            <NavbarItem isActive={pathname === "/"}>
+              <Link href="/">
+                <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+              </Link>
+            </NavbarItem>
+            <NavbarItem isActive={pathname === "/project"}>
+              <Link href="/project">
+                <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+              </Link>
+            </NavbarItem>
+            <NavbarItem isActive={pathname === "/education"}>
+              <Link href="/education">
+                <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <ThemeSwitch />
+            </NavbarItem>
+          </NavbarContent>
+        </NextUINavbar>
+      ))}
+    </LiveIsland>
   );
 };
