@@ -15,7 +15,7 @@ export default function Home() {
         <div className="welcome-greet py-5 text-center">
           <h1 className={'text-current pb-4 font-bold text-[40px]'}>Zidan Khulul Sajid</h1>
           <div className="text-lg">
-            <p>Software Developer based on Bandung, Indonesia.</p>
+            <p>Software Engineer based on Bandung, Indonesia.</p>
             <p>Specializing on building website, backend development, and everything in beetwen.</p>
           </div>
         </div>
