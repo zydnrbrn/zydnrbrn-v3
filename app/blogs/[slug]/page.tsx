@@ -1,54 +1,43 @@
 import fs from 'fs'
 import path from 'path'
+import { getPost } from '@/utilites/blogUtils'
+// import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter'
-// import remarkGfm from 'remark-gfm'
+// import { MDXRemote } from 'next-mdx-remote'
+import Markdown from 'react-markdown'
 
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import Button from '@/components/mdx/button'
 
-// const options = {
-//     mdxOptions: {
-//         remarkPlugins: [remarkGfm],
-//         rehypePlugins: [],
-//     }
-// }
-
-export async function generatedStaticParams() {
+export async function generateStaticParams() {
     const files = fs.readdirSync(path.join('blogs'));
-    const paths = files.map(filename => ({
+    const params = files.map(filename => ({
         slug: filename.replace('.mdx', '')
     }));
 
-    return paths
+    return params
 }
 
-function getPost({ slug }: { slug: string }) {
-    const markdownFile = fs.readFileSync(path.join('blogs', slug + '.mdx'), 'utf-8')
-
-    const { data: frontMatter, content } = matter(markdownFile)
-
+export async function generateMetadata({ params }: any) {
+    const blog = await getPost(params);
     return {
-        frontMatter,
-        slug,
-        content
+        title: blog.frontMatter.title,
+        description: blog.frontMatter.description,
+        mdxSource: blog.mdxSource
     }
 }
 
-export default function Post({ params }: any) {
-    const props = getPost(params);
+export default async function PostPage({ params }: any) {
+    const markdownFile = fs.readFileSync(path.join('blogs', params.slug + '.mdx'), 'utf-8')
+    const { data: frontMatter, content } = matter(markdownFile)
+    // const mdxSource = await serialize(content)
+    // console.info(content)
 
     return (
         <article className='prose prose-sm md:prose-base lg:prose-lg prose-slate !prose-invert mx-auto'>
-            <h1>{props.frontMatter.title}</h1>
-            <MDXRemote source={props.content} components={{ Button }} />
+            <h1>{frontMatter.title}</h1>
+            {/* <MDXRemote {...mdxSource} /> */}
+            <Markdown>
+                {content}
+            </Markdown>
         </article>
-    )
-}
-
-export async function generateMetaData({ params }: any) {
-    const blog = getPost(params);
-    return {
-        title: blog.frontMatter.title,
-        description: blog.frontMatter.description
-    }
+    );
 }

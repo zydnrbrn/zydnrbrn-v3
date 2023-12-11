@@ -1,5 +1,3 @@
-import { HomeLogo, ProjectLogo, EducationLogo } from "@/components/icons";
-
 export const siteConfig = {
   name: process.env.APP_TITLE,
   description: process.env.APP_DESCRIPTION,

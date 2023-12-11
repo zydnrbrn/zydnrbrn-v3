@@ -5,9 +5,8 @@ import {
   NavbarItem,
 } from "@nextui-org/navbar";
 import Link from "next/link";
-import { HomeLogo, ProjectLogo, EducationLogo } from "./icons";
+import { HomeLogo, ProjectLogo, EducationLogo, BlogLogo } from "./icons";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { Tooltip } from "@nextui-org/tooltip";
 import { usePathname } from "next/navigation"
 import LiveIsland from "react-live-island";
 
@@ -42,14 +41,9 @@ export const Navbar = () => {
                 <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
               </Link>
             </NavbarItem>
-            <NavbarItem isActive={pathname === "/project"}>
-              <Link href="/project">
-                <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-              </Link>
-            </NavbarItem>
-            <NavbarItem isActive={pathname === "/education"}>
-              <Link href="/education">
-                <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+            <NavbarItem isActive={pathname === "/"}>
+              <Link href="/blogs">
+                <BlogLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
               </Link>
             </NavbarItem>
             <NavbarItem>

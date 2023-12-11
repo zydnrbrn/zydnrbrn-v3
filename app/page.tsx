@@ -1,9 +1,9 @@
 import { imageConfig } from "@/config/image";
-import { skillIcon } from "@/config/icons";
 import { Image } from "@nextui-org/image";
-import { Button } from "@nextui-org/button";
-import { Chip } from "@nextui-org/chip";
 import { Divider } from "@nextui-org/divider";
+import Socials from "@/components/socials";
+import { ListPosts } from "@/components/posts";
+import ListProjects from "@/components/projects";
 
 export default function Home() {
   return (
@@ -14,54 +14,21 @@ export default function Home() {
         </div>
         <div className="welcome-greet py-5 text-center">
           <h1 className={'text-current pb-4 font-bold text-[40px]'}>Zidan Khulul Sajid</h1>
-          <div className="text-lg">
-            <p>Software Developer based on Bandung, Indonesia.</p>
-            <p>Specializing on building website, backend development, and everything in beetwen.</p>
+          <div className="text-lg font-extralight">
+            <p>Is a <b>Software Engineer</b>, <b>Backend Engineer</b> and <b>React Developer.</b></p>
           </div>
         </div>
-        <Button radius="full" className="text-lg mt-5 bg-gradient-to-b from-black to-graymac text-white shadow-lg">Get in touch</Button>
+        <Socials />
       </div>
-      <div className="skilset flex md:flex-row flex-col rounded-[20px] my-[95px] w-full">
-        <div className="p-4 text-lg justify-center items-center md:w-1/2">
-          <h1 className="text-current pb-4 font-bold text-[30px] flex-grow">Aboutttt ...</h1>
-          <Divider className="text-black mb-5" />
-          <p className="text-current">Halo, Im Zidan Khulul Sajid, Software Developer from Bandung, Indonesia. I&#39;ve been in the world of software development for more than 2 years, My goal is create good, maintainable, and user-friendly software too.</p>
-          <p className="text-current">I&#39;m familiar to working with a tech stack:</p>
-          <div className="stack pt-5 flex flex-wrap gap-4">
-            {skillIcon.map((icon) => (
-              <Chip
-                key={icon.label}
-                startContent={<Image src={icon.icon} alt={icon.label} width={20} height={20} />}
-                className="bg-black text-white dark:bg-white dark:text-black"
-              >
-                {icon.label}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <Image className="py-10 justify-center items-center" src={imageConfig.greet} alt="Greeeettt" />
+      <div className="skilset flex flex-col rounded-[20px] my-[95px] w-full">
+        <h1 className="text-current pb-4 font-bold text-[30px] flex-grow">My Projects</h1>
+        <Divider className="text-black mb-5" />
+        <ListProjects />
       </div>
-      <div className="project flex md:flex-row flex-col rounded-[20px] my-[95px] w-full">
-        <div className="p-4 text-lg justify-center items-center md:w-1/2">
-          <h1 className="text-current pb-4 font-bold text-[30px] flex-grow">
-            Some Projects I&#39;v build ...
-          </h1>
-          <Divider className="text-black mb-5" />
-          <p className="text-current">Halo, Im Zidan Khulul Sajid, Software Developer from Bandung, Indonesia. I&#39;ve been in the world of software development for more than 2 years, My goal is create good, maintainable, and user-friendly software too.</p>
-          <p className="text-current">I&#39;m familiar to working with a tech stack:</p>
-          <div className="stack pt-5 flex flex-wrap gap-4">
-            {skillIcon.map((icon) => (
-              <Chip
-                key={icon.label}
-                startContent={<Image src={icon.icon} alt={icon.label} width={20} height={20} />}
-                className="bg-black text-white dark:bg-white dark:text-black"
-              >
-                {icon.label}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <Image className="py-10 justify-center items-center" src={imageConfig.greet} alt="Greeeettt" />
+      <div className="skilset flex flex-col rounded-[20px] my-[95px] w-full">
+        <h1 className="text-current pb-4 font-bold text-[30px] flex-grow">Recent Post</h1>
+        <Divider className="text-black mb-5" />
+        <ListPosts />
       </div>
     </>
   );
