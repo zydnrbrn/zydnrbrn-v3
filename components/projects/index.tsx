@@ -24,21 +24,21 @@ const ListProjects = () => {
             description: 'Simple realtime chat website implementation.',
             href: 'https://github.com/zydnrbrn/nectify',
             role: 'Creator',
-            years: ['2022', 'present'],
+            years: ['2022'],
         },
         {
             title: 'Village Administration App',
             description: 'Open Source Village (Desa) Management Apps for managing Resident, and Letters. This is monolith app React.js inside Laravel using Inertia.js.',
             href: 'https://github.com/zydnrbrn/administrasi-desa',
             role: 'Creator',
-            years: ['2022', 'present'],
+            years: ['2022'],
         },
         {
             title: 'Spring Microservices',
             description: 'Example implementation of Java Spring Boot Microservices with Apache Kafka.',
             href: 'https://github.com/zydnrbrn/spring-microservices',
             role: 'Creator',
-            years: ['2022', 'present'],
+            years: ['2022'],
         },
     ]
 
