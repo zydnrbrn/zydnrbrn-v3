@@ -1,27 +1,32 @@
-'use client'
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/navbar";
 import Link from "next/link";
-import { HomeLogo, ProjectLogo, EducationLogo, BlogLogo } from "./icons";
+import { HomeLogo, BlogLogo } from "./icons";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { usePathname } from "next/navigation"
+import { usePathname } from "next/navigation";
 import LiveIsland from "react-live-island";
 
 export const Navbar = () => {
   const pathname = usePathname();
-  let currentLogo = <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+  let currentLogo = (
+    <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+  );
   if (pathname === "/") {
-    currentLogo = <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
-  } else if (pathname === "/project") {
-    currentLogo = <ProjectLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+    currentLogo = (
+      <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+    );
   } else {
-    currentLogo = <EducationLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />;
+    currentLogo = (
+      <BlogLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+    );
   }
   return (
-    <LiveIsland className="flex justify-center items-center uppercase"
+    <LiveIsland
+      className="flex justify-center items-center uppercase"
       top={20}
       triggerType="hover"
       smallClassName="text-xs"
@@ -30,28 +35,35 @@ export const Navbar = () => {
       largeClassName="text-7xl"
       initialAnimation
     >
-      {(isSmall) => (isSmall ? currentLogo : (
-        <NextUINavbar
-          className=" bg-black flex z-50 max-w-[890px] rounded-[80px] mt-5 transform transition ease-in-out duration-200"
-          position="sticky"
-        >
-          <NavbarContent className="flex items-center w-full px-4" justify="center">
-            <NavbarItem isActive={pathname === "/"}>
-              <Link href="/">
-                <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-              </Link>
-            </NavbarItem>
-            <NavbarItem isActive={pathname === "/"}>
-              <Link href="/blogs">
-                <BlogLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <ThemeSwitch />
-            </NavbarItem>
-          </NavbarContent>
-        </NextUINavbar>
-      ))}
+      {(isSmall) =>
+        isSmall ? (
+          currentLogo
+        ) : (
+          <NextUINavbar
+            className=" bg-black flex z-50 max-w-[890px] rounded-[80px] mt-5 transform transition ease-in-out duration-200"
+            position="sticky"
+          >
+            <NavbarContent
+              className="flex items-center w-full px-4"
+              justify="center"
+            >
+              <NavbarItem isActive={pathname === "/"}>
+                <Link href="/">
+                  <HomeLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+                </Link>
+              </NavbarItem>
+              <NavbarItem isActive={pathname === "/"}>
+                <Link href="/blogs">
+                  <BlogLogo className="transform transition ease-in-out duration-200 dark:text-white text-white" />
+                </Link>
+              </NavbarItem>
+              <NavbarItem>
+                <ThemeSwitch />
+              </NavbarItem>
+            </NavbarContent>
+          </NextUINavbar>
+        )
+      }
     </LiveIsland>
   );
 };
